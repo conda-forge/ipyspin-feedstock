@@ -5,11 +5,13 @@ Home: http://github.com/davidbrochart/ipyspin
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ipyspin-feedstock/blob/master/LICENSE.txt)
 
 Summary: A Jupyter widget library for dynamically creating spinning activity indicators
 
+Development: http://github.com/davidbrochart/ipyspin
 
+Documentation: http://github.com/davidbrochart/ipyspin
 
 Current build status
 ====================
