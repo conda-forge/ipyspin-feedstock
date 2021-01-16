@@ -1,5 +1,5 @@
 {% set name = "ipyspin" %}
-{% set version = "0.1.2" %}
+{% set version = "0.1.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: bbd5faf133923dc654c9e72992585eb4862b303b477760f52af15df3c7dc89cb
+  sha256: a099910d7a8d729a669f2ae499bc198d3171fe9d4dd5e2b03eef369e8a80a90b
 
 build:
   noarch: python
@@ -16,23 +16,26 @@ build:
 
 requirements:
   host:
-    - python
+    - python >=3.6
     - pip
     - nodejs
+    - jupyter
+    - jupyterlab =3
+    - jupyter-packaging
   run:
-    - ipywidgets >=7.5.0
-    - python
+    - ipywidgets >=7.6.0,<8.0.0
+    - python >=3.6
 
 test:
   imports:
     - ipyspin
   commands:
-    - test -f ${PREFIX}/share/jupyter/nbextensions/ipyspin/extension.js                                     # [unix]
-    - test -f ${PREFIX}/share/jupyter/nbextensions/ipyspin/index.js                                         # [unix]
-    - test -f ${PREFIX}/share/jupyter/lab/extensions/ipyspin-{{ version }}.tgz                              # [unix]
-    - if exist %PREFIX%\\share\\jupyter\\nbextensions\\ipyspin\\extension.js (exit 0) else (exit 1)         # [win]
-    - if exist %PREFIX%\\share\\jupyter\\nbextensions\\ipyspin\\index.js (exit 0) else (exit 1)             # [win]
-    - if exist %PREFIX%\\share\\jupyter\\lab\\extensions\\ipyspin-{{ version }}.tgz (exit 0) else (exit 1)  # [win]
+    - test -f ${PREFIX}/share/jupyter/nbextensions/ipyspin/extension.js                     # [unix]
+    - test -f ${PREFIX}/share/jupyter/nbextensions/ipyspin/index.js                         # [unix]
+    - test -f ${PREFIX}/share/jupyter/labextensions/ipyspin/package.json                    # [unix]
+    - if not exist %PREFIX%\\share\\jupyter\\nbextensions\\ipyspin\\extension.js (exit 1)   # [win]
+    - if not exist %PREFIX%\\share\\jupyter\\nbextensions\\ipyspin\\index.js (exit 1)       # [win]
+    - if not exist %PREFIX%\\share\\jupyter\\labextensions\\ipyspin\\package.json (exit 1)  # [win]
 
 about:
   home: http://github.com/davidbrochart/ipyspin
