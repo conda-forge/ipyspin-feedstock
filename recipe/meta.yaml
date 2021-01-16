@@ -1,5 +1,5 @@
 {% set name = "ipyspin" %}
-{% set version = "0.1.2" %}
+{% set version = "0.1.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: bbd5faf133923dc654c9e72992585eb4862b303b477760f52af15df3c7dc89cb
+  sha256: a099910d7a8d729a669f2ae499bc198d3171fe9d4dd5e2b03eef369e8a80a90b
 
 build:
   noarch: python
